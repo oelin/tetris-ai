@@ -1,0 +1,62 @@
+
+
+# best:
+#print([*heights(board)], mheight(board), outliers(board))
+#return board.score
+# -0.9hl, -0.5nc, -0.4mh, -0.3sp, 0.5sc: 8000
+# -0.9hl, -0.6nc, 0.5sc: 10,000
+# change
+# -aheight(clone) -100*holes(clone) -spikey(clone) +clone.lines | 27k
+# -aheight(clone) -100*holes(clone) -10*spikey(clone) -ncells(clone) | 67k
+# -aheight(clone) -100*holes(clone) -10*spikey(clone) + ncells(clone) | 132k
+# -aheight(clone) -100*holes(clone) -15*spikey(clone) + ncells(clone) | similar to previous but seems more consistent
+# 2*clone.lines + 0.5*ncells(clone) - 9*spikey(clone) - 90*holes(clone) | 42k on seed 48, <= 400 blocks
+ ncells(clone) - aheight(clone) - 100 * holes(clone) - 10 * var(clone)
+
+#  ncells(clone) - 100*holes(clone) - 10*spikey(clone) - aheight(clone), 39K
+
+
+
+
+
+    # def move(self, x, rot, clone):
+    #     moves = []
+    #     final = []
+    #
+    #     for i in range(rot):
+    #         moves.append(Rotation.Clockwise)
+    #
+    #     dist = x - clone.falling.left
+    #     dir = 'LEFT' if dist < 0 else 'RIGHT'
+    #
+    #     for i in range(abs(dist)):
+    #         moves.append(Direction(dir))
+    #
+    #     #moves.append(Direction('DROP'))
+    #     landed = 0
+    #     #down = clone.height - rot - abs(dist)
+    #     #moves += [Direction('DOWN')]*down
+    #
+    #     while not landed:
+    #         move = moves.pop(0)
+    #         final.append(move)
+    #
+    #         if type(move) is Direction:
+    #             landed = clone.move(move)
+    #
+    #         elif type(move) is Rotation:
+    #             landed = clone.rotate(move)
+    #
+    #     return final
+
+
+        #p1 = 2*clone.lines + 0.8*ncells(clone) - 9*spikey(clone) - 90*holes(clone)
+        #p2 = 2*clone.lines + 0.5*ncells(clone) - 9*spikey(clone) - 90*holes(clone)
+
+
+        #p2 = -0.510066*aheight(clone) + 0.760666*lines -0.35663*holes(clone) -0.184483*var(clone)
+
+
+        # def saftey(self, boad, clone):
+        #     # return -gaps(clone)
+        #     # #return -stdev(list(heights(clone))) - 0.4*holes(clone) + 1.2*dlines(board, clone) # TODO: get rid of deep wells
